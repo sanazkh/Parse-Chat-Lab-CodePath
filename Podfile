@@ -7,4 +7,5 @@ target 'ParseChat' do
 
   # Pods for ParseChat
     pod 'Parse'
+    pod 'MBProgressHUD'
 end

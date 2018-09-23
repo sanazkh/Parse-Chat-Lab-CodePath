@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import MBProgressHUD
 
 class RegistrationViewController: UIViewController {
 
@@ -30,6 +32,7 @@ class RegistrationViewController: UIViewController {
         let email = emailText.text ?? ""
         
         if userName != "" && pass != ""{
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             registerUser(userName!, pass!, email)
         }else{
             createAlert("Required Fields!", "Please fill in the blanks.")
@@ -42,16 +45,18 @@ class RegistrationViewController: UIViewController {
         let newUser = PFUser()
         
         // set user properties
-        let username1 = username
-        let email1 = email
-        let password1 = password
+        newUser.email = email
+        newUser.username = username
+        newUser.password = password
         
         // call sign up function on the object
         newUser.signUpInBackground { (success: Bool, error: Error?) in
             if let error = error {
-                createAlert("Login Failed!", error.localizedDescription)
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.createAlert("Login Failed!", error.localizedDescription)
             } else {
-                createAlert("Success!", "User Registered successfully")
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.createAlert("Success!", "User Registered successfully")
             }
         }
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		043733523D9E2DE068BE43A4 /* Pods_ParseChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617199C85FC43F025F6D9069 /* Pods_ParseChat.framework */; };
+		A3792EDA215755F9000B4D14 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3792ED9215755F9000B4D14 /* ChatTableViewCell.swift */; };
 		A37A9D672152E66200FF8E5D /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A9D662152E66200FF8E5D /* RegistrationViewController.swift */; };
 		A37A9D6A2152E9C800FF8E5D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37A9D692152E9C800FF8E5D /* ChatViewController.swift */; };
 		A3F26E2F2152CD43003ED9E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F26E2E2152CD43003ED9E6 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		3C816F46BE5678795D7230CD /* Pods-ParseChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParseChat/Pods-ParseChat.debug.xcconfig"; sourceTree = "<group>"; };
 		617199C85FC43F025F6D9069 /* Pods_ParseChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParseChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3792ED9215755F9000B4D14 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		A37A9D662152E66200FF8E5D /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		A37A9D692152E9C800FF8E5D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A3F26E2B2152CD42003ED9E6 /* ParseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A3792ED8215755DA000B4D14 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A3792ED9215755F9000B4D14 /* ChatTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A37A9D682152E99000FF8E5D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 		A3F26E2D2152CD42003ED9E6 /* ParseChat */ = {
 			isa = PBXGroup;
 			children = (
+				A3792ED8215755DA000B4D14 /* Views */,
 				A37A9D682152E99000FF8E5D /* Controllers */,
 				A3F26E2E2152CD43003ED9E6 /* AppDelegate.swift */,
 				A3F26E322152CD43003ED9E6 /* Main.storyboard */,
@@ -200,11 +211,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ParseChat/Pods-ParseChat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +235,7 @@
 				A3F26E312152CD43003ED9E6 /* LoginViewController.swift in Sources */,
 				A3F26E2F2152CD43003ED9E6 /* AppDelegate.swift in Sources */,
 				A37A9D672152E66200FF8E5D /* RegistrationViewController.swift in Sources */,
+				A3792EDA215755F9000B4D14 /* ChatTableViewCell.swift in Sources */,
 				A37A9D6A2152E9C800FF8E5D /* ChatViewController.swift in Sources */,
 				A3F26E372152CD43003ED9E6 /* ParseChat.xcdatamodeld in Sources */,
 			);

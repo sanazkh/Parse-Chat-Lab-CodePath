@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -23,9 +25,10 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButton(_ sender: Any) {
-        let username = usernameLabel.text ?? ""
-        let password = passwordLabel.text ?? ""
+        let username = self.userName.text ?? ""
+        let password = self.passWord.text ?? ""
         if username != "" && password != ""{
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             loginUser(username, password)
         }else{
             createAlert("Required Fields!", "Please fill in the blanks.")
@@ -36,19 +39,21 @@ class LoginViewController: UIViewController {
         
         PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
             if let error = error {
-                createAlert("Login Failed!", error.localizedDescription)
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.createAlert("Login Failed!", error.localizedDescription)
             } else {
+                MBProgressHUD.hide(for: self.view, animated: true)
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
         }
     }
     
     
-    func createAlert(_ title : String, _ message : String){
-        var titleText = title
-        var messageText = message
-        let alert = UIAlertController(title: titleText, message:
-            messageText, preferredStyle: UIAlertControllerStyle.alert)
+    func createAlert(_ titleT : String, _ messageT : String){
+      //  var titleText = title
+      //  var messageText = message
+        let alert = UIAlertController(title: titleT, message:
+            messageT, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:nil))
         self.present(alert, animated: true, completion: nil)
     }
