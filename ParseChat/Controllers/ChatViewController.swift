@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import AlamofireImage
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -45,6 +46,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let objects = objects {
                 self.messages = objects
                 self.myTableView.reloadData()
+                self.refreshControl.endRefreshing()
             } else {
                 print(error?.localizedDescription ?? "")
             }
@@ -89,6 +91,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatTableViewCell
         
+        cell.avatarImage.layer.cornerRadius = cell.avatarImage.frame.height / 2
+        cell.avatarImage.clipsToBounds = true
+        
         let chatMessage = messages[indexPath.row]
         if let msg = chatMessage["text"] as? String {
             cell.chatCell.text = msg
@@ -96,10 +101,26 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.chatCell.text = ""
         }
         
+
+        
+        
         if let user = chatMessage["user"] as? PFUser {
             cell.userNameLabel.text = user.username
-        } else {
+            let baseURL = "https://api.adorable.io/avatars/"
+            let identifier = user.username!
+            if(identifier != "🤖"){
+                let path = "100/\(String(describing: identifier))"
+                let avatarURL = URL(string: baseURL+path)
+                if(avatarURL != nil){
+                    cell.avatarImage.af_setImage(withURL: avatarURL!)
+                }else{
+                    cell.avatarImage.image = #imageLiteral(resourceName: "default-placeholder")
+                }
+            }
+               
+        }else {
             cell.userNameLabel.text = "🤖"
+            cell.avatarImage.image = #imageLiteral(resourceName: "default-placeholder")
         }
         
         return cell

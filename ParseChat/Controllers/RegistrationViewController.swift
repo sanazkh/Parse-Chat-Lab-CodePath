@@ -11,34 +11,52 @@ import Parse
 import MBProgressHUD
 
 class RegistrationViewController: UIViewController {
-
+    @IBOutlet var submitButtonOutlet: UIButton!
+    @IBOutlet var password: UITextField!
+    @IBOutlet var emailText: UITextField!
+    @IBOutlet var userNameLabel: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        submitButtonOutlet.isEnabled = false
+        [userNameLabel, password, emailText].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
     }
 
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet var password: UITextField!
-    @IBOutlet var emailText: UITextField!
-    @IBOutlet var userNameLabel: UITextField!
+    @objc func editingChanged(_ textField: UITextField) {
+        if userNameLabel.text?.characters.count == 1 {
+            if userNameLabel.text?.characters.first == " " {
+                userNameLabel.text = ""
+                return
+            }
+        }
+        guard
+            let userN = userNameLabel.text, !(userNameLabel.text?.isEmpty)!,
+            let pass = password.text, !(password.text?.isEmpty)!,
+            let email = emailText.text, !(emailText.text?.isEmpty)!
+            else {
+                submitButtonOutlet.isEnabled = false
+                return
+        }
+        submitButtonOutlet.isEnabled = true
+    }
+    
     @IBAction func registerButton(_ sender: Any) {
         let userName = userNameLabel.text
         let pass = password.text
         let email = emailText.text ?? ""
-        
-        if userName != "" && pass != ""{
-            MBProgressHUD.showAdded(to: self.view, animated: true)
-            registerUser(userName!, pass!, email)
-        }else{
-            createAlert("Required Fields!", "Please fill in the blanks.")
-        }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        registerUser(userName!, pass!, email)
+
     }
     
+    
+
 
     func registerUser(_ username : String, _ password : String, _ email : String) {
         // initialize a user object

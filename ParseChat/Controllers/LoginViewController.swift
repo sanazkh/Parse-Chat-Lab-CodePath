@@ -25,11 +25,10 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButton(_ sender: Any) {
-        let username = self.userName.text ?? ""
-        let password = self.passWord.text ?? ""
-        if username != "" && password != ""{
+       
+        if !(self.userName.text?.isEmpty)! && !(self.passWord.text?.isEmpty)!{
             MBProgressHUD.showAdded(to: self.view, animated: true)
-            loginUser(username, password)
+            loginUser(self.userName.text!, self.passWord.text!)
         }else{
             createAlert("Required Fields!", "Please fill in the blanks.")
         }

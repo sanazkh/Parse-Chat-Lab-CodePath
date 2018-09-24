@@ -8,4 +8,5 @@ target 'ParseChat' do
   # Pods for ParseChat
     pod 'Parse'
     pod 'MBProgressHUD'
+    pod 'AlamofireImage'
 end

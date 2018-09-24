@@ -83,7 +83,7 @@
                     <connections>
                         <outlet property="passWord" destination="JrQ-mf-Ucc" id="9fJ-46-U3N"/>
                         <outlet property="userName" destination="TMy-nG-KM1" id="reY-BW-BxR"/>
-                        <segue destination="dUM-7z-eRM" kind="show" identifier="loginSegue" id="pZx-2s-Z0a"/>
+                        <segue destination="dUM-7z-eRM" kind="presentation" identifier="loginSegue" id="EKV-dS-Cxm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -142,7 +142,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButton:" destination="RhP-0k-3id" eventType="touchUpInside" id="hi1-Ee-pxX"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="n8Z-hp-qSh"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="loginPageBack" id="n8Z-hp-qSh"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbC-P8-s5b">
@@ -176,6 +176,7 @@
                     <connections>
                         <outlet property="emailText" destination="Jnu-aq-8lF" id="gpt-No-b0t"/>
                         <outlet property="password" destination="TbC-P8-s5b" id="ffc-QH-yrr"/>
+                        <outlet property="submitButtonOutlet" destination="8FQ-uJ-2pW" id="uVS-MS-Ptb"/>
                         <outlet property="userNameLabel" destination="i5q-0N-wVK" id="An8-tK-IOT"/>
                     </connections>
                 </viewController>
@@ -224,37 +225,50 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="211.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYS-cN-nwY">
-                                                    <rect key="frame" x="8" y="90" width="359" height="113"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jYS-cN-nwY">
+                                                    <rect key="frame" x="8" y="40" width="359" height="163"/>
                                                     <color key="backgroundColor" red="0.31687593801684366" green="0.59205630172238843" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <attributedString key="attributedText"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="16"/>
+                                                            <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82B-uY-5p9">
-                                                    <rect key="frame" x="8" y="21" width="359" height="37"/>
-                                                    <color key="backgroundColor" red="0.96880572368650875" green="0.96880572368650875" blue="0.96880572368650875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82B-uY-5p9">
+                                                    <rect key="frame" x="50" y="10" width="100" height="20"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="CdH-uf-gFO"/>
+                                                        <constraint firstAttribute="height" constant="20" id="nD6-61-Qr4"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7sQ-Pn-03M">
+                                                    <rect key="frame" x="10" y="10" width="30" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="SLv-gy-Hd2"/>
+                                                        <constraint firstAttribute="width" constant="30" id="u2T-FT-FBJ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="jYS-cN-nwY" firstAttribute="leading" secondItem="tun-RH-CV0" secondAttribute="leading" constant="8" id="1JU-hv-w4G"/>
                                                 <constraint firstAttribute="trailing" secondItem="jYS-cN-nwY" secondAttribute="trailing" constant="8" id="1Pr-ZV-91O"/>
+                                                <constraint firstItem="82B-uY-5p9" firstAttribute="leading" secondItem="7sQ-Pn-03M" secondAttribute="trailing" constant="10" id="5Qa-kl-Lpp"/>
                                                 <constraint firstAttribute="bottom" secondItem="jYS-cN-nwY" secondAttribute="bottom" constant="8" id="8N9-nU-t74"/>
-                                                <constraint firstItem="82B-uY-5p9" firstAttribute="top" secondItem="tun-RH-CV0" secondAttribute="top" constant="8" id="DGc-qP-fAW"/>
-                                                <constraint firstAttribute="trailing" secondItem="82B-uY-5p9" secondAttribute="trailing" constant="8" id="JNx-jf-cLf"/>
-                                                <constraint firstItem="82B-uY-5p9" firstAttribute="leading" secondItem="tun-RH-CV0" secondAttribute="leading" constant="8" id="P42-5J-sR6"/>
-                                                <constraint firstItem="jYS-cN-nwY" firstAttribute="top" secondItem="82B-uY-5p9" secondAttribute="bottom" constant="8" id="eMZ-K4-Nz2"/>
+                                                <constraint firstItem="82B-uY-5p9" firstAttribute="top" secondItem="tun-RH-CV0" secondAttribute="top" constant="10" id="DGc-qP-fAW"/>
+                                                <constraint firstItem="7sQ-Pn-03M" firstAttribute="top" secondItem="tun-RH-CV0" secondAttribute="top" constant="10" id="GEt-wb-vdI"/>
+                                                <constraint firstItem="jYS-cN-nwY" firstAttribute="top" secondItem="82B-uY-5p9" secondAttribute="bottom" constant="10" id="eMZ-K4-Nz2"/>
+                                                <constraint firstItem="7sQ-Pn-03M" firstAttribute="leading" secondItem="tun-RH-CV0" secondAttribute="leading" constant="10" id="ibx-Sc-YoO"/>
+                                                <constraint firstItem="jYS-cN-nwY" firstAttribute="top" secondItem="7sQ-Pn-03M" secondAttribute="bottom" constant="10" id="tY2-gO-rLk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="avatarImage" destination="7sQ-Pn-03M" id="f4S-Pc-rps"/>
                                             <outlet property="chatCell" destination="jYS-cN-nwY" id="ly4-cV-nvg"/>
                                             <outlet property="userNameLabel" destination="82B-uY-5p9" id="spA-5v-3um"/>
                                         </connections>

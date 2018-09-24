@@ -12,6 +12,9 @@ class ChatTableViewCell: UITableViewCell {
 
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var chatCell: UILabel!
+    
+    @IBOutlet var avatarImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
