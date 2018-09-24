@@ -20,21 +20,20 @@ The following **stretch** user stories are implemented:
 
 - [x] User sees an activity indicator while waiting for authentication (+1pt)
 - [x] User can pull to refresh Chat feed (+1pt)
-- [ ] Add an "Adorable Avatar" for each user by requesting an avatar from the [Adorable Avatars API](https://github.com/adorableio/avatars-api) (+2pt)
+- [x] Add an "Adorable Avatar" for each user by requesting an avatar from the [Adorable Avatars API](https://github.com/adorableio/avatars-api) (+2pt)
 - [x] Chat Bubble Style Design (+3pt)
-- [ ] Expand or contract the cell layout as needed to show the chat message author (user) if it exists (+2pt)
+- [x] Expand or contract the cell layout as needed to show the chat message author (user) if it exists (+2pt)
 
 The following **additional** user stories are implemented:
 
 - [x] Add app icon
-
-
+- [x] Default image placeholder for when the avatar can't be shown
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/BwA46F4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
